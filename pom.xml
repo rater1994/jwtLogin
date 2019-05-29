@@ -26,6 +26,7 @@
         <module>rest-api-impl</module>
         <module>service-api</module>
         <module>service-api-impl</module>
+        <module>system</module>
     </modules>
 
     <properties>

@@ -13,36 +13,45 @@ import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
-public class AccountControllerImpl  implements AccountController {
+public class AccountControllerImpl implements AccountController {
 
-    @Autowired
-    private AccountService accountService;
+	@Autowired
+	private AccountService accountService;
 
-    @Override
-    public List<AccountDto> getAllAccounts() {
-        return accountService.getAllAccountsDto();
-    }
+	@Override
+	public List <AccountDto> getAllAccounts() {
+		return accountService.getAllAccountsDto();
+	}
 
-    @Override
-    public AccountDto addAccount(@RequestBody AccountDto accountDto){
-        return accountService.addAccountDTO(accountDto);
-    }
+	@Override
+	public AccountDto addAccount(@RequestBody AccountDto accountDto) {
+		return accountService.addAccountDTO( accountDto );
+	}
 
-    @Override
-    public AccountDto editAccount(@RequestBody AccountDto accountDto,@PathVariable Long id) {
-        return accountService.editAccountDTO(accountDto,id);
-    }
+	@Override
+	public AccountDto editAccount(@RequestBody AccountDto accountDto, @PathVariable Long id) {
+		return accountService.editAccountDTO( accountDto, id );
+	}
 
-    @Override
-    public AccountDto findAccount(@PathVariable Long id){
-        return accountService.findAccountDTO(id);
-    }
+	@Override
+	public AccountDto findAccount(@PathVariable Long id) {
+		return accountService.findAccountDTO( id );
+	}
 
-    @Override
-    public AccountDto deleteAccount(@PathVariable Long id) {
-     return accountService.deleteAccountDTO(id);
-    }
+	@Override
+	public AccountDto deleteAccount(@PathVariable Long id) {
+		return accountService.deleteAccountDTO( id );
+	}
 
+	@Override
+	public ResponseEntity<String>  signIn(@RequestBody AccountDto accountDto) {
+		return accountService.signInAccountDto( accountDto );
+	}
+
+	@Override
+	public ResponseEntity<String>  signUp(@RequestBody AccountDto accountDto) {
+		return accountService.signUpAccountDto( accountDto );
+	}
 
 
 }

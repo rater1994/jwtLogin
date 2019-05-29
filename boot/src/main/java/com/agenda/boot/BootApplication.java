@@ -14,7 +14,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 //
 
 @ComponentScan({"com.agenda.*"})
-@EnableJpaRepositories("com.agenda.model.repository")
+@EnableJpaRepositories({"com.agenda.model.repository"})
 @EntityScan({"com.agenda.model.entity"})
 public class BootApplication {
 

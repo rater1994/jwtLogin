@@ -1,4 +1,4 @@
-package com.agenda.boot.security.services;
+package com.agenda.security.services;
 
 import com.agenda.model.entity.Account;
 import com.agenda.model.repository.AccountRepository;

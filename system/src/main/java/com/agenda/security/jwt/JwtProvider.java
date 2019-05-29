@@ -1,6 +1,6 @@
-package com.agenda.boot.security.jwt;
+package com.agenda.security.jwt;
 
-import com.agenda.boot.security.services.UserPrinciple;
+import com.agenda.security.services.UserPrinciple;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

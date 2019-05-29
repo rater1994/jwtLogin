@@ -1,8 +1,8 @@
-package com.agenda.boot.security;
+package com.agenda.security.webconfig;
 
-import com.agenda.boot.security.jwt.JwtAuthEntryPoint;
-import com.agenda.boot.security.jwt.JwtAuthTokenFilter;
-import com.agenda.boot.security.services.UserDetailsServiceImpl;
+import com.agenda.security.jwt.JwtAuthTokenFilter;
+import com.agenda.security.services.UserDetailsServiceImpl;
+import com.agenda.security.jwt.JwtAuthEntryPoint;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

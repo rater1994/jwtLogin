@@ -1,6 +1,7 @@
 package com.agenda.serviceapi;
 
 import com.agenda.model.dto.AccountDto;
+import com.agenda.model.entity.Account;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,4 +21,8 @@ public interface AccountService {
     AccountDto findAccountDTO(@PathVariable Long id);
 
     AccountDto deleteAccountDTO(@PathVariable Long id);
+
+	ResponseEntity<String>  signInAccountDto(@RequestBody AccountDto accountDto);
+
+	ResponseEntity<String>  signUpAccountDto(@RequestBody AccountDto accountDto);
 }

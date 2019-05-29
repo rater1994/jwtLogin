@@ -1,6 +1,6 @@
-package com.agenda.boot.security.jwt;
+package com.agenda.security.jwt;
 
-import com.agenda.boot.security.services.UserDetailsServiceImpl;
+import com.agenda.security.services.UserDetailsServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
