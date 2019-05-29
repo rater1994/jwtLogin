@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.xml.ws.Response;
 import java.util.List;
 
 @RestController
@@ -44,12 +43,12 @@ public class AccountControllerImpl implements AccountController {
 	}
 
 	@Override
-	public ResponseEntity<String>  signIn(@RequestBody AccountDto accountDto) {
+	public ResponseEntity<?>  signIn(@RequestBody AccountDto accountDto) {
 		return accountService.signInAccountDto( accountDto );
 	}
 
 	@Override
-	public ResponseEntity<String>  signUp(@RequestBody AccountDto accountDto) {
+	public ResponseEntity<?>  signUp(@RequestBody AccountDto accountDto) {
 		return accountService.signUpAccountDto( accountDto );
 	}
 

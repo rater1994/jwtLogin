@@ -22,7 +22,7 @@ public interface AccountService {
 
     AccountDto deleteAccountDTO(@PathVariable Long id);
 
-	ResponseEntity<String>  signInAccountDto(@RequestBody AccountDto accountDto);
+	ResponseEntity<?>  signInAccountDto(@RequestBody AccountDto accountDto);
 
-	ResponseEntity<String>  signUpAccountDto(@RequestBody AccountDto accountDto);
+	ResponseEntity<?>  signUpAccountDto(@RequestBody AccountDto accountDto);
 }

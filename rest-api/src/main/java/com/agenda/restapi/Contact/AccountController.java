@@ -27,10 +27,10 @@ public interface AccountController {
     AccountDto deleteAccount(@PathVariable Long id);
 
     @PostMapping("/signin")
-	ResponseEntity<String> signIn(@RequestBody AccountDto accountDto);
+	ResponseEntity<?> signIn(@RequestBody AccountDto accountDto);
 
     @PostMapping("/signup")
-    ResponseEntity<String>  signUp(@RequestBody AccountDto accountDto);
+    ResponseEntity<?>  signUp(@RequestBody AccountDto accountDto);
 
 }
 

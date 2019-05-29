@@ -2,20 +2,25 @@ package com.agenda.serviceapiimpl;
 
 import com.agenda.model.dto.AccountDto;
 import com.agenda.model.entity.Account;
+import com.agenda.model.entity.Role;
+import com.agenda.model.entity.RoleName;
 import com.agenda.model.repository.AccountRepository;
+import com.agenda.model.repository.RoleRepository;
+import com.agenda.security.response.JwtResponse;
+import com.agenda.security.response.ResponseMessage;
 import com.agenda.serviceapi.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.agenda.security.jwt.JwtProvider;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class AccountServiceImpl implements AccountService {
@@ -27,32 +32,26 @@ public class AccountServiceImpl implements AccountService {
 	JwtProvider jwtProvider;
 
 	@Autowired
+	RoleRepository roleRepository;
+
+	@Autowired
 	private AccountRepository accountRepository;
 
 	@Autowired
 	private AccountService accountService;
 
+	@Autowired
+	PasswordEncoder encoder;
+
 	@Override
 	public List <AccountDto> getAllAccountsDto() {
+
 		List <AccountDto> list = new ArrayList <>();
 
 		accountRepository.findAll().forEach( account -> {
 			list.add( account.toAccountDto() );
 		} );
 		return list;
-	}
-
-
-	@Override
-	public AccountDto addAccountDTO(AccountDto accountDto) {
-		Account account = new Account();
-
-		account.updateAccountDto( accountDto );
-
-		System.out.println( accountDto.getRoles() );
-
-		return accountRepository.save( account ).toAccountDto();
-
 	}
 
 
@@ -93,19 +92,26 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public ResponseEntity <String> signInAccountDto(AccountDto accountDto) {
-
-		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken( accountDto.getUsername(), accountDto.getPassword()) );
-
-		String jwt = jwtProvider.generateJwtToken( authentication );
-		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-		return ResponseEntity.ok( new JwtResponse )
+	public ResponseEntity <?> signInAccountDto(AccountDto accountDto) {
+		return null;
 	}
 
 	@Override
-	public ResponseEntity <String> signUpAccountDto(AccountDto accountDto) {
+	public ResponseEntity <?> signUpAccountDto(AccountDto accountDto) {
 		return null;
+	}
+
+	@Override
+	public AccountDto addAccountDTO(AccountDto accountDto) {
+		Account account = new Account();
+
+		account.updateAccountDto( accountDto );
+
+		System.out.println( accountDto.getRoles() );
+
+
+		return accountRepository.save( account ).toAccountDto();
+
 	}
 
 }
