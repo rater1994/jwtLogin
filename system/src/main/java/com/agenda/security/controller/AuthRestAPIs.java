@@ -10,6 +10,7 @@ import com.agenda.security.request.LoginForm;
 import com.agenda.security.request.SignUpForm;
 import com.agenda.security.response.JwtResponse;
 import com.agenda.security.response.ResponseMessage;
+import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,19 +47,22 @@ public class AuthRestAPIs {
 	JwtProvider jwtProvider;
 
 	@PostMapping("/signin")
-	public ResponseEntity <?> authenticateUser(@Valid @RequestBody LoginForm loginRequest) {
+	public ResponseEntity<?> authenticateUser(@RequestBody Account loginRequest) {
 
 		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken( loginRequest.getUsername(), loginRequest.getPassword() ) );
+				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-		SecurityContextHolder.getContext().setAuthentication( authentication );
+		SecurityContextHolder.getContext().setAuthentication(authentication);
 
-		String jwt = jwtProvider.generateJwtToken( authentication );
+		String jwt = jwtProvider.generateJwtToken(authentication);
 		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 
-		return ResponseEntity.ok( new JwtResponse( jwt, userDetails.getUsername(), userDetails.getAuthorities() ) );
+		return ResponseEntity.ok(new JwtResponse(jwt, userDetails.getUsername(), userDetails.getAuthorities()));
 	}
 
+	/*
+	TODO: Solve "delete flag" to be default false! (if !solve create problem to login !)
+	 */
 	@PostMapping("/signup")
 	public ResponseEntity <?> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
 		if (userRepository.existsByUsername( signUpRequest.getUsername() )) {
