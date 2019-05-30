@@ -1,5 +1,7 @@
 package com.agenda.security.request;
 
+import com.agenda.model.entity.Account;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -25,7 +27,18 @@ public class SignUpForm {
     @Size(min = 6, max = 40)
     private String password;
 
-    public String getName() {
+	private String deleteFlag;
+
+	@NotBlank
+	public String getDeleteFlag() {
+		return deleteFlag;
+	}
+
+	public void setDeleteFlag(String deleteFlag) {
+		this.deleteFlag = deleteFlag;
+	}
+
+	public String getName() {
         return name;
     }
 
