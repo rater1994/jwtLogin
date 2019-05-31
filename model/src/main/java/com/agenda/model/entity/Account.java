@@ -58,7 +58,7 @@ public class Account {
 	private String deleteFlag;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private List<Contact> contacts;
+	private List <Contact> contacts;
 
 	public Account(String name, String username, String email, String password, String deleteFlag, List<Contact> contacts) {
 		this.name = name;
