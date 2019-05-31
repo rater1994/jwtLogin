@@ -2,6 +2,8 @@ package com.agenda.model.dto;
 
 import com.agenda.model.entity.Role;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class AccountDto {
@@ -11,9 +13,17 @@ public class AccountDto {
 	private String email;
 	private String username;
 	private String password;
-
-	private Set <Role> roles;
 	private String deleteFlag;
+	private Set <Role> roles;
+	private List<ContactDto> contactDtos = new ArrayList<>();
+
+	public List <ContactDto> getContactDtos() {
+		return contactDtos;
+	}
+
+	public void setContactDtos(List <ContactDto> contactDtos) {
+		this.contactDtos = contactDtos;
+	}
 
 	public String getName() {
 		return name;

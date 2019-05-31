@@ -1,10 +1,12 @@
 package com.agenda.security.request;
 
 import com.agenda.model.entity.Account;
+import com.agenda.model.entity.Contact;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.List;
 import java.util.Set;
 
 public class SignUpForm {
@@ -28,6 +30,16 @@ public class SignUpForm {
     private String password;
 
 	private String deleteFlag;
+
+	private List<Contact> contacts;
+
+	public List <Contact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(List <Contact> contacts) {
+		this.contacts = contacts;
+	}
 
 	@NotBlank
 	public String getDeleteFlag() {

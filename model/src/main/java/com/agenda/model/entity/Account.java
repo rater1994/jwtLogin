@@ -12,7 +12,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
@@ -55,16 +57,33 @@ public class Account {
 	@Column(name = "DeleteFlag")
 	private String deleteFlag;
 
-	public Account(String name, String username, String email, String password, String deleteFlag) {
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<Contact> contacts;
+
+	public Account(String name, String username, String email, String password, String deleteFlag, List<Contact> contacts) {
 		this.name = name;
 		this.username = username;
 		this.email = email;
 		this.password = password;
 		this.deleteFlag = deleteFlag;
+		this.contacts = contacts;
 	}
 
 	public Account() {
 
+	}
+
+
+	public Long getId() {
+		return id;
+	}
+
+	public List <Contact> getContacts() {
+		return contacts;
+	}
+
+	public void setContacts(List <Contact> contacts) {
+		this.contacts = contacts;
 	}
 
 	public String getUsername() {
@@ -87,9 +106,6 @@ public class Account {
 		return password;
 	}
 
-	public Long getId() {
-		return id;
-	}
 
 	public void setId(Long id) {
 		this.id = id;
@@ -133,6 +149,10 @@ public class Account {
 		accountDto.setPassword( this.password );
 		accountDto.setRoles( this.roles );
 		accountDto.setDeleteFlag( this.deleteFlag );
+
+		accountDto.setContactDtos( new ArrayList<>() );
+		this.contacts.forEach( contact -> accountDto.getContactDtos().add( contact.toContactDto() ) );
+
 		return accountDto;
 	}
 

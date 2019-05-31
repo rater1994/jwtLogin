@@ -1,12 +1,22 @@
 package com.agenda.model.dto;
 
 public class ContactDto {
+
     private Long id;
     private String firstNameDto;
     private String lastNameDto;
     private String numberPhoneDto;
+	private Long accountId;
 
-    public Long getId() {
+	public Long getAccountId() {
+		return accountId;
+	}
+
+	public void setAccountId(Long accountId) {
+		this.accountId = accountId;
+	}
+
+	public Long getId() {
         return id;
     }
 

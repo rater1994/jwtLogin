@@ -8,68 +8,78 @@ import javax.persistence.*;
 @Entity
 public class Contact {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ID")
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "ID")
+	private Long id;
 
-    @Column(name = "First_Name")
-    private String firstName;
+	@Column(name = "First_Name")
+	private String firstName;
 
-    @Column(name = "Last_Name")
-    private String lastName;
+	@Column(name = "Last_Name")
+	private String lastName;
 
-    @Column(name = "Number_phone")
-    private String numberPhone;
+	@Column(name = "Number_phone")
+	private String numberPhone;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Account account;
 
-    public ContactDto toContactDto(){
-        ContactDto contactDto = new ContactDto();
+	public ContactDto toContactDto() {
+		ContactDto contactDto = new ContactDto();
 
-        contactDto.setId(this.id);
-        contactDto.setFirstNameDto(this.firstName);
-        contactDto.setLastNameDto(this.lastName);
-        contactDto.setNumberPhoneDto(this.numberPhone);
-        return contactDto;
-    }
+		contactDto.setId( this.id );
+		contactDto.setFirstNameDto( this.firstName );
+		contactDto.setLastNameDto( this.lastName );
+		contactDto.setNumberPhoneDto( this.numberPhone );
+		contactDto.setAccountId( account.getId() );
+		return contactDto;
+	}
 
-    public void updateContactDto(ContactDto contactDto){
-        this.id = contactDto.getId();
-        this.firstName = contactDto.getFirstNameDto();
-        this.lastName = contactDto.getLastNameDto();
-        this.numberPhone = contactDto.getNumberPhoneDto();
-    }
+	public void updateContactDto(ContactDto contactDto) {
+		this.id = contactDto.getId();
+		this.firstName = contactDto.getFirstNameDto();
+		this.lastName = contactDto.getLastNameDto();
+		this.numberPhone = contactDto.getNumberPhoneDto();
+	}
 
+	public Account getAccount() {
+		return account;
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public void setAccount(Account account) {
+		this.account = account;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getFirstName() {
-        return firstName;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public String getLastName() {
-        return lastName;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public String getNumberPhone() {
-        return numberPhone;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public void setNumberPhone(String numberPhone) {
-        this.numberPhone = numberPhone;
-    }
+	public String getNumberPhone() {
+		return numberPhone;
+	}
+
+	public void setNumberPhone(String numberPhone) {
+		this.numberPhone = numberPhone;
+	}
 }

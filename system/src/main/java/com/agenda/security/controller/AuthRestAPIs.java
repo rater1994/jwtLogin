@@ -61,8 +61,8 @@ public class AuthRestAPIs {
 	}
 
 	/*
-	TODO: Solve "delete flag" to be default false! (if !solve create problem to login !)
-	 */
+	TODO:
+		 */
 	@PostMapping("/signup")
 	public ResponseEntity <?> registerUser(@Valid @RequestBody SignUpForm signUpRequest) {
 		if (userRepository.existsByUsername( signUpRequest.getUsername() )) {
@@ -77,7 +77,7 @@ public class AuthRestAPIs {
 
 		// Creating user's account
 		Account user = new Account( signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-				encoder.encode( signUpRequest.getPassword()), signUpRequest.getDeleteFlag());
+				encoder.encode( signUpRequest.getPassword()), signUpRequest.getDeleteFlag(), signUpRequest.getContacts());
 
 		Set <String> strRoles = signUpRequest.getRole();
 		Set <Role> roles = new HashSet <>();
