@@ -6,6 +6,7 @@ import com.agenda.model.entity.Contact;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -31,17 +32,17 @@ public class SignUpForm {
 
 	private String deleteFlag;
 
-	private List<Contact> contacts;
+	private Set<Contact> contacts;
 
-	public List <Contact> getContacts() {
-		return contacts;
-	}
+    public Set<Contact> getContacts() {
+        return contacts;
+    }
 
-	public void setContacts(List <Contact> contacts) {
-		this.contacts = contacts;
-	}
+    public void setContacts(Set<Contact> contacts) {
+        this.contacts = contacts;
+    }
 
-	@NotBlank
+    @NotBlank
 	public String getDeleteFlag() {
 		return deleteFlag;
 	}

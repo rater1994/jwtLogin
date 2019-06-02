@@ -1,6 +1,7 @@
 package com.agenda.security.controller;
 
 import com.agenda.model.entity.Account;
+import com.agenda.model.entity.Contact;
 import com.agenda.model.entity.Role;
 import com.agenda.model.entity.RoleName;
 import com.agenda.model.repository.AccountRepository;
@@ -74,9 +75,9 @@ public class AuthRestAPIs {
 					HttpStatus.BAD_REQUEST );
 		}
 
-		// Creating user's account
+		// Creating user's account   , signUpRequest.getContacts()
 		Account user = new Account( signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-				encoder.encode( signUpRequest.getPassword()), signUpRequest.getDeleteFlag(), signUpRequest.getContacts());
+				encoder.encode( signUpRequest.getPassword()), signUpRequest.getDeleteFlag());
 
 		Set <String> strRoles = signUpRequest.getRole();
 		Set <Role> roles = new HashSet <>();
