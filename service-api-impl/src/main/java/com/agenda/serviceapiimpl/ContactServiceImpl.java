@@ -6,7 +6,6 @@ import com.agenda.model.repository.ContactRepository;
 import com.agenda.serviceapi.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +35,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public ContactDto getContactDTO(Long id) {
-        if(contactRepository.findById(id).isPresent()){
+        if (contactRepository.findById(id).isPresent()) {
             return contactRepository.findById(id).get().toContactDto();
         }
         return null;

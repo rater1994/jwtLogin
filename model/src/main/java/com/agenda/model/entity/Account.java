@@ -18,7 +18,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.logging.Logger;
 
-import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
 @Entity
 @SQLDelete(sql = "UPDATE users SET delete_flag = 'DELETED' WHERE id = ?", check = ResultCheckStyle.COUNT)
@@ -72,7 +71,6 @@ public class Account {
 	public Account() {
 
 	}
-
 
 	public Long getId() {
 		return id;

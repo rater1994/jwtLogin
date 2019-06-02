@@ -32,6 +32,7 @@ public class Contact {
 		contactDto.setFirstNameDto( this.firstName );
 		contactDto.setLastNameDto( this.lastName );
 		contactDto.setNumberPhoneDto( this.numberPhone );
+		contactDto.setAccountDtoId(this.account);
 		return contactDto;
 	}
 
@@ -40,6 +41,7 @@ public class Contact {
 		this.firstName = contactDto.getFirstNameDto();
 		this.lastName = contactDto.getLastNameDto();
 		this.numberPhone = contactDto.getNumberPhoneDto();
+        this.account = contactDto.getAccountDtoId();
 
 	}
 
