@@ -1,0 +1,60 @@
+<h4>Content from Server</h4>
+{{board}}
+{{errorMessage}}
+
+<div class="container">
+
+  <table class="table table-hover table-bordered table-inverse">
+    <tr>
+      <th>ID</th>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Number phone</th>
+    </tr>
+
+    <tr *ngFor="let contact of contacts" >
+      <td>
+        {{contact.id }}
+      </td>
+
+      <td>
+        {{contact.firstNameDto}}
+      </td>
+
+      <td>
+        {{contact.lastNameDto}}
+      </td>
+
+      <td class="test">
+        {{contact.numberPhoneDto}}
+      </td>
+    </tr>
+  </table>
+
+
+
+</div>
+
+<div class="container">
+
+  <form (ngSubmit)="processForm()">
+    <form name="form" (ngSubmit)="onSubmits()" #f="ngForm" novalidate>
+    <div class="form group">
+      <label for="firstName">First Name</label>
+      <input type="text" name="firstName" class="form-control" [(ngModel)]="form.firstNameDto">
+    </div>
+    <div class="form group">
+      <label for="lastName">Last Name</label>
+      <input type="text" name="lastName" class="form-control" [(ngModel)]="form.lastNameDto">
+    </div>
+    <div class="form group">
+      <label for="phoneNumber">Phone Number</label>
+      <input type="text" name="lastName" class="form-control" [(ngModel)]="form.numberPhoneDto">
+    </div>
+    <input type="submit" value="save" class="btn btn-success">
+
+  </form>
+  </form>
+</div>
+
+
